@@ -16,7 +16,7 @@ RSpec.describe "Merchants API" do
       expect(merchant).to have_key(:id)
       expect(merchant[:id]).to be_an(Integer)
 
-      expect(merchant).to have_key(:nmae)
+      expect(merchant).to have_key(:name)
       expect(merchant[:name]).to be_a(String)
 
       expect(merchant).to have_key(:created_at)
@@ -26,4 +26,5 @@ RSpec.describe "Merchants API" do
       expect(merchant[:updated_at]).to be_a(String)
     end
   end
+end
 
