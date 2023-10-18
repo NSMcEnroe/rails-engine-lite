@@ -8,22 +8,18 @@ RSpec.describe "Merchants API" do
 
     expect(response).to be_successful
 
-    merchants = JSON.parse(response.body, symbolize_names: true)
+    merchants_data = JSON.parse(response.body, symbolize_names: true)
+
+    merchants = merchants_data[:data]
 
     expect(merchants.count).to eq(3)
 
     merchants.each do |merchant|
       expect(merchant).to have_key(:id)
-      expect(merchant[:id]).to be_an(Integer)
+      expect(merchant[:id]).to be_a(String)
 
-      expect(merchant).to have_key(:name)
-      expect(merchant[:name]).to be_a(String)
-
-      expect(merchant).to have_key(:created_at)
-      expect(merchant[:created_at]).to be_a(String)
-
-      expect(merchant).to have_key(:updated_at)
-      expect(merchant[:updated_at]).to be_a(String)
+      expect(merchant).to have_key(:attributes)
+      expect(merchant[:attributes][:name]).to be_a(String)
     end
   end
 
@@ -32,21 +28,16 @@ RSpec.describe "Merchants API" do
   
     get "/api/v1/merchants/#{id}"
   
-    merchant = JSON.parse(response.body, symbolize_names: true)
+    merchant_data = JSON.parse(response.body, symbolize_names: true)
+    merchant = merchant_data[:data]
   
     expect(response).to be_successful
   
     expect(merchant).to have_key(:id)
-    expect(merchant[:id]).to be_an(Integer)
+    expect(merchant[:id]).to be_a(String)
 
-    expect(merchant).to have_key(:name)
-    expect(merchant[:name]).to be_a(String)
-
-    expect(merchant).to have_key(:created_at)
-    expect(merchant[:created_at]).to be_a(String)
-
-    expect(merchant).to have_key(:updated_at)
-    expect(merchant[:updated_at]).to be_a(String)
+    expect(merchant).to have_key(:attributes)
+    expect(merchant[:attributes][:name]).to be_a(String)
   end
 
   it "can create a new merchant" do
@@ -74,18 +65,6 @@ RSpec.describe "Merchants API" do
     expect(response).to be_successful
     expect(merchant.name).to_not eq(previous_name)
     expect(merchant.name).to eq("Honey's Home")
-  end
-
-  it "can destroy a merchant" do
-    merchant = create(:merchant)
-  
-    expect(Merchant.count).to eq(1)
-  
-    delete "/api/v1/merchants/#{merchant.id}"
-  
-    expect(response).to be_successful
-    expect(Merchant.count).to eq(0)
-    expect{Merchant.find(merchant.id)}.to raise_error(ActiveRecord::RecordNotFound)
   end
 end
 
