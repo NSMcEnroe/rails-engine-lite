@@ -40,6 +40,18 @@ RSpec.describe "Merchants API" do
     expect(merchant[:attributes][:name]).to be_a(String)
   end
 
+  it "returns a 404 when id does not exist" do
+    get "/api/v1/merchants/1"
+
+    merchant = JSON.parse(response.body, symbolize_names: true)
+    
+    expect(response).to have_http_status(404)
+    expect(merchant).to have_key(:error)
+    expect(merchant[:error]).to eq("Merchant does not exist")
+
+
+  end
+
   it "can create a new merchant" do
     merchant_params = ({
                     name: "Elmer's Emporium"
