@@ -418,6 +418,7 @@
           3,
           3,
           3,
+          3,
           null,
           null,
           null
@@ -517,16 +518,6 @@
           1,
           1,
           1,
-          null,
-          1,
-          null
-        ]
-      },
-      "/Users/nicholasmcenroe/turing_work/3mod/projects/rails-engine/rails-engine/app/serializers/merchant_serializer.rb": {
-        "lines": [
-          1,
-          1,
-          1,
           null
         ]
       },
@@ -556,8 +547,16 @@
           null,
           null
         ]
+      },
+      "/Users/nicholasmcenroe/turing_work/3mod/projects/rails-engine/rails-engine/app/serializers/merchant_serializer.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null
+        ]
       }
     },
-    "timestamp": 1697647283
+    "timestamp": 1697649367
   }
 }

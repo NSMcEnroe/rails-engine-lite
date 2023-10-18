@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2023-10-18T10:41:23-06:00">2023-10-18T10:41:23-06:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2023-10-18T11:16:07-06:00">2023-10-18T11:16:07-06:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -183,9 +183,9 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#4b17d899f90755d11c645cfbdc0e8df7254f6db8" class="src_link" title="app/serializers/item_serializer.rb">app/serializers/item_serializer.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">6</td>
             <td class="cell--number">4</td>
-            <td class="cell--number">4</td>
+            <td class="cell--number">3</td>
+            <td class="cell--number">3</td>
             <td class="cell--number">0</td>
             <td class="cell--number">1.00</td>
             
@@ -381,11 +381,11 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#f68e85ef3cc47fa9f4d9cfad15d689a0eed9503b" class="src_link" title="spec/requests/api/v1/items_request_spec.rb">spec/requests/api/v1/items_request_spec.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">31</td>
-            <td class="cell--number">19</td>
-            <td class="cell--number">19</td>
+            <td class="cell--number">32</td>
+            <td class="cell--number">20</td>
+            <td class="cell--number">20</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">1.63</td>
+            <td class="cell--number">1.70</td>
             
           </tr>
         
@@ -472,7 +472,7 @@
 
             
 
-            <code class="ruby">    render json: ItemSerializer.new(Item.all)</code>
+            <code class="ruby">    render json: ItemSerializer.new(Merchant.find(params[:merchant_id]).items)</code>
           </li>
         </div>
       
@@ -1566,8 +1566,8 @@
     
 
     <div class="t-line-summary">
-      <b>4</b> relevant lines.
-      <span class="green"><b>4</b> lines covered</span> and
+      <b>3</b> relevant lines.
+      <span class="green"><b>3</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -1607,34 +1607,12 @@
 
             
 
-            <code class="ruby">  attributes :name, :description, :unit_price</code>
+            <code class="ruby">  attributes :name, :description, :unit_price, :merchant_id</code>
           </li>
         </div>
       
         <div>
           <li class="never" data-hits="" data-linenumber="4">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="5">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">  belongs_to :merchant</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="6">
             
             
 
@@ -4984,8 +4962,8 @@
     
 
     <div class="t-line-summary">
-      <b>19</b> relevant lines.
-      <span class="green"><b>19</b> lines covered</span> and
+      <b>20</b> relevant lines.
+      <span class="green"><b>20</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -5047,7 +5025,7 @@
 
             
 
-            <code class="ruby">    id = create(:merchant).id</code>
+            <code class="ruby">    merchant = create(:merchant)</code>
           </li>
         </div>
       
@@ -5069,7 +5047,7 @@
 
             
 
-            <code class="ruby">    item_1 = create(:item, merchant_id: id)</code>
+            <code class="ruby">    item_1 = create(:item, merchant_id: merchant.id)</code>
           </li>
         </div>
       
@@ -5080,7 +5058,7 @@
 
             
 
-            <code class="ruby">    item_2 = create(:item, merchant_id: id)</code>
+            <code class="ruby">    item_2 = create(:item, merchant_id: merchant.id)</code>
           </li>
         </div>
       
@@ -5091,7 +5069,7 @@
 
             
 
-            <code class="ruby">    item_3 = create(:item, merchant_id: id)</code>
+            <code class="ruby">    item_3 = create(:item, merchant_id: merchant.id)</code>
           </li>
         </div>
       
@@ -5113,7 +5091,7 @@
 
             
 
-            <code class="ruby">    get &quot;/api/v1/merchants/#{id}/items&quot;</code>
+            <code class="ruby">    get &quot;/api/v1/merchants/#{merchant.id}/items&quot;</code>
           </li>
         </div>
       
@@ -5305,13 +5283,13 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="29">
-            
-            
-
+          <li class="covered" data-hits="3" data-linenumber="29">
+            <span class="hits">3</span>
             
 
-            <code class="ruby">    end</code>
+            
+
+            <code class="ruby">      expect(item[:attributes][:merchant_id]).to be_a(Integer)</code>
           </li>
         </div>
       
@@ -5322,12 +5300,23 @@
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
         <div>
           <li class="never" data-hits="" data-linenumber="31">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="32">
             
             
 

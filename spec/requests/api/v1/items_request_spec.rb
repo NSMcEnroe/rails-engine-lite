@@ -2,13 +2,13 @@ require "rails_helper"
 
 RSpec.describe "Items API" do
   it "gets all items" do
-    id = create(:merchant).id
+    merchant = create(:merchant)
 
-    item_1 = create(:item, merchant_id: id)
-    item_2 = create(:item, merchant_id: id)
-    item_3 = create(:item, merchant_id: id)
+    item_1 = create(:item, merchant_id: merchant.id)
+    item_2 = create(:item, merchant_id: merchant.id)
+    item_3 = create(:item, merchant_id: merchant.id)
 
-    get "/api/v1/merchants/#{id}/items"
+    get "/api/v1/merchants/#{merchant.id}/items"
     
     expect(response).to be_successful
 
@@ -26,6 +26,7 @@ RSpec.describe "Items API" do
       expect(item[:attributes][:name]).to be_a(String)
       expect(item[:attributes][:description]).to be_a(String)
       expect(item[:attributes][:unit_price]).to be_a(Float)
+      expect(item[:attributes][:merchant_id]).to be_a(Integer)
     end
   end
 end
