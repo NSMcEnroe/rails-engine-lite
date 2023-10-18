@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2023-10-17T19:45:59-06:00">2023-10-17T19:45:59-06:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2023-10-17T19:50:53-06:00">2023-10-17T19:50:53-06:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -30,7 +30,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         1.23
+         1.2
        </span>
     </span> hits/line
     )
@@ -43,8 +43,8 @@
   </div>
 
   <div class="t-line-summary">
-    <b>87</b> relevant lines,
-    <span class="green"><b>87</b> lines covered</span> and
+    <b>99</b> relevant lines,
+    <span class="green"><b>99</b> lines covered</span> and
     <span class="red"><b>0</b> lines missed. </span>
     (<span class="green">
   100.0%
@@ -73,9 +73,9 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#c9586334f8de522b577be529f7eba2824e2cae5b" class="src_link" title="app/controllers/api/v1/merchants_controller.rb">app/controllers/api/v1/merchants_controller.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">9</td>
-            <td class="cell--number">5</td>
-            <td class="cell--number">5</td>
+            <td class="cell--number">19</td>
+            <td class="cell--number">10</td>
+            <td class="cell--number">10</td>
             <td class="cell--number">0</td>
             <td class="cell--number">1.00</td>
             
@@ -216,11 +216,11 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#57b158af0fc98687ca5eb711aeffea92c0272d62" class="src_link" title="spec/requests/api/v1/merchants_request_spec.rb">spec/requests/api/v1/merchants_request_spec.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">52</td>
-            <td class="cell--number">30</td>
-            <td class="cell--number">30</td>
+            <td class="cell--number">66</td>
+            <td class="cell--number">37</td>
+            <td class="cell--number">37</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">1.53</td>
+            <td class="cell--number">1.43</td>
             
           </tr>
         
@@ -255,8 +255,8 @@
     
 
     <div class="t-line-summary">
-      <b>5</b> relevant lines.
-      <span class="green"><b>5</b> lines covered</span> and
+      <b>10</b> relevant lines.
+      <span class="green"><b>10</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -357,6 +357,116 @@
       
         <div>
           <li class="never" data-hits="" data-linenumber="9">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="10">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  def create </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="11">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    render json: Merchant.create(merchant_params)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="12">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="13">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="14">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  private</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="15">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="16">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  def merchant_params</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="17">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    params.require(:merchant).permit(:name)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="18">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="19">
             
             
 
@@ -2507,7 +2617,7 @@
 
             
 
-            <code class="ruby">        resources :merchants, only: [:index, :show]</code>
+            <code class="ruby">        resources :merchants, only: [:index, :show, :create]</code>
           </li>
         </div>
       
@@ -2671,8 +2781,8 @@
     
 
     <div class="t-line-summary">
-      <b>30</b> relevant lines.
-      <span class="green"><b>30</b> lines covered</span> and
+      <b>37</b> relevant lines.
+      <span class="green"><b>37</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -3240,12 +3350,166 @@
 
             
 
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="52">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  it &quot;can create a new merchant&quot; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="53">
+            
+            
+
+            
+
+            <code class="ruby">    merchant_params = ({</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="54">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">                    name: &quot;Elmer&#39;s Emporium&quot;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="55">
+            
+            
+
+            
+
+            <code class="ruby">                  })</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="56">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    headers = {&quot;CONTENT_TYPE&quot; =&gt; &quot;application/json&quot;}</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="57">
+            
+            
+
+            
+
+            <code class="ruby">  </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="58">
+            
+            
+
+            
+
+            <code class="ruby">    # We include this header to make sure that these params are passed as JSON rather than as plain text</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="59">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    post &quot;/api/v1/merchants&quot;, headers: headers, params: JSON.generate(merchant: merchant_params)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="60">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    created_merchant = Merchant.last</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="61">
+            
+            
+
+            
+
+            <code class="ruby">  </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="62">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    expect(response).to be_successful</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="63">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    expect(created_merchant.name).to eq(merchant_params[:name])</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="64">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="65">
+            
+            
+
+            
+
             <code class="ruby">end</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="52">
+          <li class="never" data-hits="" data-linenumber="66">
             
             
 
