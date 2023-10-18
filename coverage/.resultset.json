@@ -177,6 +177,16 @@
           null
         ]
       },
+      "/Users/nicholasmcenroe/turing_work/3mod/projects/rails-engine/rails-engine/spec/factories/customers.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
       "/Users/nicholasmcenroe/turing_work/3mod/projects/rails-engine/rails-engine/spec/factories/merchants.rb": {
         "lines": [
           1,
@@ -204,8 +214,12 @@
           null
         ]
       },
-      "/Users/nicholasmcenroe/turing_work/3mod/projects/rails-engine/rails-engine/app/models/merchant.rb": {
+      "/Users/nicholasmcenroe/turing_work/3mod/projects/rails-engine/rails-engine/app/models/customer.rb": {
         "lines": [
+          1,
+          1,
+          null,
+          1,
           1,
           null
         ]
@@ -213,6 +227,62 @@
       "/Users/nicholasmcenroe/turing_work/3mod/projects/rails-engine/rails-engine/app/models/application_record.rb": {
         "lines": [
           1,
+          1,
+          null
+        ]
+      },
+      "/Users/nicholasmcenroe/turing_work/3mod/projects/rails-engine/rails-engine/spec/models/invoice_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          2,
+          2,
+          2,
+          2,
+          null,
+          null,
+          1,
+          2,
+          null,
+          null
+        ]
+      },
+      "/Users/nicholasmcenroe/turing_work/3mod/projects/rails-engine/rails-engine/app/models/invoice.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          null
+        ]
+      },
+      "/Users/nicholasmcenroe/turing_work/3mod/projects/rails-engine/rails-engine/spec/models/merchant_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          2,
+          2,
+          null,
+          null,
+          1,
+          2,
+          null,
+          null
+        ]
+      },
+      "/Users/nicholasmcenroe/turing_work/3mod/projects/rails-engine/rails-engine/app/models/merchant.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null,
           1,
           null
         ]
@@ -350,6 +420,6 @@
         ]
       }
     },
-    "timestamp": 1697594605
+    "timestamp": 1697606870
   }
 }
