@@ -78,5 +78,23 @@ RSpec.describe "Merchants API" do
     expect(merchant.name).to_not eq(previous_name)
     expect(merchant.name).to eq("Honey's Home")
   end
+
+  it "can search for a merchant" do
+    create_list(:merchant, 20)
+    
+    get "/api/v1/merchants/find?name=e"
+
+    expect(response).to be_successful
+
+    merchants_data = JSON.parse(response.body, symbolize_names: true)
+
+    merchant = merchants_data[:data]
+
+    expect(merchant).to have_key(:id)
+    expect(merchant[:id]).to be_a(String)
+
+    expect(merchant).to have_key(:attributes)
+    expect(merchant[:attributes][:name]).to be_a(String)
+  end
 end
 
