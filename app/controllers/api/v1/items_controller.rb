@@ -36,23 +36,39 @@ class Api::V1::ItemsController < ApplicationController
   end
 
   def find_all
-    if params[:name].present?
-      items = Item.search_items(params[:name])
-      if items != nil
-        render json: ItemSerializer.new(items)
-      else
-        render json: { 
-          data: {
-          error: "Item does not exist"
-          }
-        }, status: 404
+    if params[:name].present? && (params[:min_price].present? || params[:max_price].present?)
+      render json: { error: "Can not search for name and price at the same time" }, status: 400
+    else
+      if params[:name].present?
+        items = Item.search_items(params[:name])
+        if items != nil
+          render json: ItemSerializer.new(items)
+        else
+          render json: { 
+            data: {
+            error: "Item does not exist"
+            }
+          }, status: 404
+        end
+      elsif params[:min_price].present?
+        if params[:min_price].to_i < 0
+          render json: { errors: {
+            error: "Value can't be negative" 
+          }}, status: 400
+        else
+          items = Item.min_price(params[:min_price])
+          render json: ItemSerializer.new(items)
+        end
+      elsif params[:max_price].present?
+        if params[:max_price].to_i < 0
+          render json: { errors: {
+            error: "Value can't be negative" 
+          }}, status: 400
+        else
+          items = Item.max_price(params[:max_price])
+          render json: ItemSerializer.new(items)
+        end
       end
-    elsif params[:min_price].present?
-      items = Item.min_price(params[:min_price])
-      render json: ItemSerializer.new(items)
-    elsif params[:max_price].present?
-      items = Item.min_price(params[:min_price])
-      render json: ItemSerializer.new(items)
     end
   end
 
