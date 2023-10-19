@@ -72,6 +72,55 @@ class Api::V1::ItemsController < ApplicationController
     end
   end
 
+  def find
+    if params[:name].present? && (params[:min_price].present? || params[:max_price].present?)
+      render json: { error: "Can not search for name and price at the same time" }, status: 400
+    else
+      if params[:name].present?
+        item = Item.search_item(params[:name])
+        if item != nil
+          render json: ItemSerializer.new(item)
+        else
+          render json: { 
+            data: {
+            error: "Item does not exist"
+            }
+          }, status: 404
+        end
+      elsif params[:min_price].present?
+        if params[:min_price].to_i < 0
+          render json: { errors: {
+            error: "Value can't be negative" 
+          }}, status: 400
+        else
+          item = Item.min_price_single_item(params[:min_price])
+          if item.nil?
+            render json: { data: {
+              error: "No Item was this expensive" 
+            }}, status: 400
+          else
+            render json: ItemSerializer.new(item)
+          end
+        end
+      elsif params[:max_price].present?
+        if params[:max_price].to_i < 0
+          render json: { errors: {
+            error: "Value can't be negative" 
+          }}, status: 400
+        else
+          item = Item.max_price_single_item(params[:max_price])
+          if item.nil?
+            render json: { data: {
+              error: "No Item was this expensive" 
+            }}, status: 400
+          else
+            render json: ItemSerializer.new(item)
+          end
+        end
+      end
+    end
+  end
+
   private
 
   def item_params

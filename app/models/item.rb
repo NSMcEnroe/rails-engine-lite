@@ -14,7 +14,19 @@ class Item < ApplicationRecord
     where("unit_price >= ?", price)
   end
 
+  def self.min_price_single_item(price)
+    where("unit_price >= ?", price).order(name: :asc).first
+  end
+
   def self.max_price(price)
     where("unit_price <= ?", price)
+  end
+
+  def self.max_price_single_item(price)
+    where("unit_price <= ?", price).order(name: :asc).first
+  end
+
+  def self.search_item(search_params)
+    where("name ILIKE ?", "%#{search_params.downcase}%").first
   end
 end
