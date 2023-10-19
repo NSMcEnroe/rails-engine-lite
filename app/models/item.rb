@@ -5,4 +5,8 @@ class Item < ApplicationRecord
   validates :name, presence: true
   validates :description, presence: true
   validates :unit_price, presence: true
+
+  def self.search_items(search_params)
+    where("name ILIKE ?", "%#{search_params.downcase}%")
+  end
 end
