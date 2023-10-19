@@ -50,6 +50,9 @@ class Api::V1::ItemsController < ApplicationController
     elsif params[:min_price].present?
       items = Item.min_price(params[:min_price])
       render json: ItemSerializer.new(items)
+    elsif params[:max_price].present?
+      items = Item.min_price(params[:min_price])
+      render json: ItemSerializer.new(items)
     end
   end
 
