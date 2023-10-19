@@ -151,4 +151,30 @@ RSpec.describe "Items API" do
     expect(item.name).to_not eq(previous_name)
     expect(item.name).to eq("Sombrero Rojo")
   end
+
+  it "gets a merhant through a single item" do
+    merchant = create(:merchant)
+
+    item_1 = create(:item, merchant_id: merchant.id)
+    item_2 = create(:item, merchant_id: merchant.id)
+    item_3 = create(:item, merchant_id: merchant.id)
+
+    get "/api/v1/items/#{item_1.id}/merchant"
+    
+    expect(response).to be_successful
+
+    merchant_data = JSON.parse(response.body, symbolize_names: true)
+
+    merchant = merchant_data[:data]
+
+    expect(response).to be_successful
+  
+    expect(merchant).to have_key(:id)
+    expect(merchant[:id]).to be_a(String)
+
+    expect(merchant).to have_key(:attributes)
+    expect(merchant[:attributes][:name]).to be_a(String)
+    
+  end
+
 end
