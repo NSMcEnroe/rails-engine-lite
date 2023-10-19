@@ -93,5 +93,15 @@ RSpec.describe "Items API" do
     expect(item[:attributes][:merchant_id]).to be_a(Integer)
   end
 
+  it "returns a 404 when id does not exist and is not in proper format" do
+    get "/api/v1/items/1"
+
+    item = JSON.parse(response.body, symbolize_names: true)
+    
+    expect(response).to have_http_status(404)
+    expect(item).to have_key(:error)
+    expect(item[:error]).to eq("Item does not exist")
+  end
+
 
 end
