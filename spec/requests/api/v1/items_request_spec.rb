@@ -152,7 +152,7 @@ RSpec.describe "Items API" do
     expect(item.name).to eq("Sombrero Rojo")
   end
 
-  it "gets a merhant through a single item" do
+  it "gets a merchant through a single item" do
     merchant = create(:merchant)
 
     item_1 = create(:item, merchant_id: merchant.id)

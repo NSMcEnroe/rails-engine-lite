@@ -96,5 +96,17 @@ RSpec.describe "Merchants API" do
     expect(merchant).to have_key(:attributes)
     expect(merchant[:attributes][:name]).to be_a(String)
   end
+
+  it "returns an error when no name matches the search" do
+    create(:merchant, name: "Blue")
+
+    get "/api/v1/merchants/find?name=z"
+
+    merchant = JSON.parse(response.body, symbolize_names: true)
+    
+    expect(response).to have_http_status(404)
+    expect(merchant[:data]).to have_key(:error)
+    expect(merchant[:data][:error]).to eq("Merchant does not exist")
+  end
 end
 

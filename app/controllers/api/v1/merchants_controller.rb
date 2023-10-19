@@ -20,7 +20,16 @@ class Api::V1::MerchantsController < ApplicationController
   end
 
   def find
-    render json: MerchantSerializer.new(Merchant.search_merchant(params[:name]))
+    specific_merchant = Merchant.search_merchant(params[:name])
+    if specific_merchant != nil
+      render json: MerchantSerializer.new(specific_merchant)
+    else
+      render json: { 
+        data: {
+        error: "Merchant does not exist"
+        }
+      }, status: 404
+    end
   end
 
   private
