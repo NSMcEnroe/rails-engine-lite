@@ -36,15 +36,20 @@ class Api::V1::ItemsController < ApplicationController
   end
 
   def find_all
-    items = Item.search_items(params[:name])
-    if items != nil
+    if params[:name].present?
+      items = Item.search_items(params[:name])
+      if items != nil
+        render json: ItemSerializer.new(items)
+      else
+        render json: { 
+          data: {
+          error: "Item does not exist"
+          }
+        }, status: 404
+      end
+    elsif params[:min_price].present?
+      items = Item.min_price(params[:min_price])
       render json: ItemSerializer.new(items)
-    else
-      render json: { 
-        data: {
-        error: "Item does not exist"
-        }
-      }, status: 404
     end
   end
 

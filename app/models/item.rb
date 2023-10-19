@@ -9,4 +9,8 @@ class Item < ApplicationRecord
   def self.search_items(search_params)
     where("name ILIKE ?", "%#{search_params.downcase}%")
   end
+
+  def self.min_price(price)
+    where("unit_price >= ?", price)
+  end
 end
